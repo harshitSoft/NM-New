@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+@theme {
+  --color-brand-base: #f3efe7;
+  --color-brand-surface: #f3efe7;
+  --color-brand-surface-alt: #ebe5d9;
+  --color-brand-text: #26231f;
+  --color-brand-text-inverse: #f3efe7;
+  --color-brand-accent: #2a4a9f;
+  --color-brand-muted-light: #8d867b;
+  --color-brand-muted-dark: #8d867b;
+  --color-brand-card: #ebe5d9;
+
+  --font-serif: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-handwriting: "Caveat", cursive;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-brand-text bg-brand-base;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Architectural blueprint grid pattern */
+    background-image: linear-gradient(rgba(42,74,159,0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,74,159,0.13) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px, -1px -1px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold text-brand-text tracking-tight;
+  }
+
+  .bg-brand-surface, .bg-brand-surface-alt {
+    color: var(--color-brand-text);
+  }
+  
+  .bg-brand-surface .text-brand-text, .bg-brand-surface-alt .text-brand-text {
+    color: var(--color-brand-text) !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f3efe7;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Custom Cursor & Magnetic Elements */
+.magnetic-btn {
+  @apply relative overflow-hidden;
+}
+
+/* Blueprint structural styles */
+.blueprint-border {
+  @apply border border-brand-accent/20;
+}
+.blueprint-card {
+  @apply bg-brand-base/80 backdrop-blur-sm border border-brand-accent/20;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Force main to have 0 margin-bottom, overriding the old fixed-footer reveal space (e.g. mb-[80vh]) */
+main {
+  margin-bottom: 0 !important;
+}
